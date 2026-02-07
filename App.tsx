@@ -18,10 +18,19 @@ const Navbar = ({ lang, setLang, isMenuOpen, setIsMenuOpen }: {
   setIsMenuOpen: (o: boolean) => void;
 }) => {
   const t = content[lang].nav;
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
   return (
-    <nav className="sticky top-0 left-0 right-0 z-50 w-full bg-[#020617]/80 backdrop-blur-md border-b border-white/10 shadow-lg reveal active">
-      <div className="max-w-[95%] mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center">
+    <nav className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 border-b border-white/10 ${scrolled ? 'bg-[#020617]/95 backdrop-blur-lg shadow-2xl py-2 md:py-3' : 'bg-[#020617]/60 backdrop-blur-md shadow-lg py-3 md:py-4'}`}>
+      <div className="max-w-[95%] mx-auto px-4 md:px-6 flex justify-between items-center">
         {/* Logo Update */}
         <div className="flex items-center gap-2">
           <img 
@@ -555,8 +564,8 @@ const Contact = ({ lang }: { lang: Language }) => {
           {/* Info Side */}
           <div className="space-y-8 md:space-y-10 reveal">
             <div>
-              <h2 className="text-2xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4">{t.title}</h2>
-              <div className="w-full h-px bg-gradient-to-r from-blue-600 to-red-600"></div>
+              <h2 className="text-2xl md:text-5xl font-black text-white uppercase tracking-tighter mb-6">{t.title}</h2>
+              <div className="w-full h-[2px] bg-gradient-to-r from-blue-600 to-red-600"></div>
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
