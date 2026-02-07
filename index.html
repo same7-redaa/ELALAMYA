@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="google" content="notranslate" />
+    <meta http-equiv="Content-Language" content="en,ar" />
+    <title>EL ALAMYA ELECTROMECHANICAL</title>
+    <meta name="description" content="Leading MEP Solutions & Electromechanical Systems" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @font-face {
+        font-family: 'Omar-Bold-1';
+        src: url('/Omar-Bold-1.ttf') format('truetype');
+        font-display: swap;
+      }
+      
+      /* Global Reset & Body */
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+      
+      html, body {
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+        background-color: #020617; /* Fallback color to prevent white bars */
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #020617; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(to bottom, #1d4ed8, #b91c1c); /* Blue to Red */
+        border-radius: 0px; /* Sharp corners */
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #1e40af; 
+      }
+      
+      /* Glassmorphism Utilities - Optimized for Performance */
+      .glass-panel {
+        background: rgba(15, 23, 42, 0.85); /* Increased opacity for less transparency calc */
+        backdrop-filter: blur(8px); /* Reduced blur */
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .glass-card {
+        background: linear-gradient(145deg, rgba(30, 58, 138, 0.1) 0%, rgba(153, 27, 27, 0.1) 100%);
+        backdrop-filter: blur(6px); /* Reduced blur */
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Removed 'all' to be more specific */
+      }
+      
+      .glass-card:hover {
+        background: linear-gradient(145deg, rgba(30, 58, 138, 0.15) 0%, rgba(153, 27, 27, 0.15) 100%);
+        border-color: rgba(255, 255, 255, 0.2); 
+        transform: translateY(-5px);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+      }
+
+      /* Gallery Animation */
+      @keyframes fadeScale {
+        0% { opacity: 0; transform: scale(0.98); }
+        100% { opacity: 1; transform: scale(1); }
+      }
+      .animate-gallery {
+        animation: fadeScale 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      /* Scroll Reveal Animation */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+        will-change: opacity, transform;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      /* Animation Delays */
+      .delay-100 { transition-delay: 0.1s; }
+      .delay-200 { transition-delay: 0.2s; }
+      .delay-300 { transition-delay: 0.3s; }
+      .delay-400 { transition-delay: 0.4s; }
+      .delay-500 { transition-delay: 0.5s; }
+
+      body {
+        /* Full Site Blue-Red Gradient */
+        /* background-attachment: fixed removed for mobile performance */
+        background: linear-gradient(135deg, #020617 0%, #172554 40%, #450a0a 100%);
+        min-height: 100vh;
+        color: #ffffff;
+        font-family: 'Omar-Bold-1', 'Cairo', sans-serif;
+      }
+      
+      /* Section Borders */
+      section {
+        border-left: 1px solid rgba(255, 255, 255, 0.05);
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
