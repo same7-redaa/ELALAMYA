@@ -32,11 +32,12 @@ const Navbar = ({ lang, setLang, isMenuOpen, setIsMenuOpen }: {
     <nav className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 border-b border-white/10 ${scrolled ? 'bg-[#020617]/95 backdrop-blur-lg shadow-2xl py-2 md:py-3' : 'bg-[#020617]/60 backdrop-blur-md shadow-lg py-3 md:py-4'}`}>
       <div className="max-w-[95%] mx-auto px-4 md:px-6 flex justify-between items-center">
         {/* Logo Update */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 relative">
+          <div className="absolute inset-0 bg-blue-600/20 blur-xl rounded-full animate-pulse"></div>
           <img 
             src="https://i.postimg.cc/fWvwHnNT/logo-ELALAMYA-png.png" 
             alt="EL ALAMYA" 
-            className="h-10 md:h-14 w-auto object-contain"
+            className="h-10 md:h-14 w-auto object-contain relative z-10 drop-shadow-[0_0_15px_rgba(59,130,246,0.8)] hover:drop-shadow-[0_0_25px_rgba(59,130,246,1)] transition-all duration-300"
           />
         </div>
 
@@ -146,7 +147,7 @@ const Hero = ({ lang }: { lang: Language }) => {
                 <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-red-600"></div>
                 <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-blue-600"></div>
 
-                <div className="w-full h-full relative overflow-hidden bg-blue-950/20 grayscale hover:grayscale-0 transition-all duration-700 group">
+                <div className="w-full h-full relative overflow-hidden bg-blue-950/20 grayscale transition-all duration-700 group">
                    <img 
                     src="https://picsum.photos/800/800?random=1" 
                     alt="Industrial" 
@@ -169,6 +170,15 @@ const Hero = ({ lang }: { lang: Language }) => {
                       LOAD: 98%<br/>
                       TEMP: 45°C
                    </div>
+                </div>
+                
+                {/* Logo overlay on hero image - outside grayscale div */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
+                  <img 
+                    src="https://i.postimg.cc/fWvwHnNT/logo-ELALAMYA-png.png" 
+                    alt="EL ALAMYA Logo" 
+                    className="w-32 md:w-48 lg:w-64 h-auto object-contain drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]"
+                  />
                 </div>
              </div>
           </div>
