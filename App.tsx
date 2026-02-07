@@ -97,7 +97,7 @@ const Hero = ({ lang }: { lang: Language }) => {
             <div className="inline-block px-3 py-1 bg-blue-950/50 border border-blue-500/30 text-blue-400 text-xs font-mono tracking-[0.2em] uppercase mb-2 reveal">
               Industrial Engineering
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-black leading-tight tracking-tighter uppercase reveal delay-100">
+            <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-none tracking-tight uppercase reveal delay-100 whitespace-nowrap overflow-hidden text-ellipsis">
               <span className="text-white">
                 {t.title.split(' ')[0]}
               </span>
@@ -106,7 +106,7 @@ const Hero = ({ lang }: { lang: Language }) => {
                 {t.title.split(' ').slice(1).join(' ')}
               </span>
             </h1>
-            <p className="text-base md:text-lg lg:text-xl text-gray-400 leading-relaxed max-w-2xl font-light border-l-4 border-blue-600 pl-4 md:pl-6 reveal delay-200">
+            <p className="text-sm md:text-base text-gray-400 leading-relaxed max-w-2xl font-light border-l-4 border-blue-600 pl-4 md:pl-6 reveal delay-200">
               {t.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row flex-wrap gap-0 justify-center md:justify-start reveal delay-300">
