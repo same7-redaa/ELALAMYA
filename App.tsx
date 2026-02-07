@@ -97,7 +97,7 @@ const Hero = ({ lang }: { lang: Language }) => {
             <div className="inline-block px-3 py-1 bg-blue-950/50 border border-blue-500/30 text-blue-400 text-xs font-mono tracking-[0.2em] uppercase mb-2 reveal">
               Industrial Engineering
             </div>
-            <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-none tracking-tight uppercase reveal delay-100 whitespace-nowrap overflow-hidden text-ellipsis">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-normal tracking-tight uppercase reveal delay-100">
               <span className="text-white">
                 {t.title.split(' ')[0]}
               </span>
