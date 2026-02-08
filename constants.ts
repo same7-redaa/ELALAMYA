@@ -145,7 +145,10 @@ export const content: Record<Language, Content> = {
         submit: 'Send Message',
       },
       info: {
-        address: '123 Business Bay, Innovation Tower, Floor 15',
+        addresses: [
+          'Cairo - 5th Settlement',
+          'UAE - Dubai'
+        ],
         phone: '+971 4 123 4567',
         email: 'info@promep-solutions.com',
       },
@@ -290,7 +293,10 @@ export const content: Record<Language, Content> = {
         submit: 'إرسال الرسالة',
       },
       info: {
-        address: '123 الخليج التجاري، برج الابتكار، طابق 15',
+        addresses: [
+          'القاهرة - التجمع الخامس',
+          'الإمارات - دبي'
+        ],
         phone: '+971 4 123 4567',
         email: 'info@promep-solutions.com',
       },

@@ -5,7 +5,7 @@ import {
   Menu, X, Globe, ChevronRight, ChevronLeft, 
   Fan, Zap, Droplets, Flame, ThermometerSun, Cpu,
   CheckCircle, MapPin, Phone, Mail, Instagram, Linkedin, Twitter, Facebook,
-  Play
+  Play, MessageCircle
 } from 'lucide-react';
 
 // --- Sub-components ---
@@ -104,6 +104,15 @@ const Hero = ({ lang }: { lang: Language }) => {
       <div className="max-w-[95%] mx-auto w-full relative z-10 text-center md:text-start">
         <div className={`flex flex-col md:flex-row items-center gap-8 md:gap-12 ${lang === 'ar' ? 'md:flex-row-reverse' : ''}`}>
           <div className="flex-1 space-y-4 md:space-y-8">
+            {/* Logo above title */}
+            <div className="flex justify-center md:justify-start mb-6 reveal">
+              <img 
+                src="https://i.postimg.cc/fWvwHnNT/logo-ELALAMYA-png.png" 
+                alt="EL ALAMYA" 
+                className="h-32 md:h-40 lg:h-48 w-auto object-contain"
+              />
+            </div>
+            
             <div className="inline-block px-3 py-1 bg-blue-950/50 border border-blue-500/30 text-blue-400 text-xs font-mono tracking-[0.2em] uppercase mb-2 reveal">
               Industrial Engineering
             </div>
@@ -578,40 +587,79 @@ const Contact = ({ lang }: { lang: Language }) => {
               <div className="w-full h-[2px] bg-gradient-to-r from-blue-600 to-red-600"></div>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              <div className="flex flex-col items-start gap-4 group">
-                <div className="p-3 md:p-4 bg-black border border-blue-600 text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(37,99,235,0.5)]">
-                  <MapPin size={20} />
-                </div>
-                <div>
-                  <h4 className="font-bold text-white text-sm md:text-lg uppercase mb-1">HQ Address</h4>
-                  <p className="text-gray-400 font-light text-sm">{t.info.address}</p>
-                </div>
+            {/* Locations Section - Centered */}
+            <div className="flex justify-center">
+              <div className="grid grid-cols-2 gap-6 md:gap-8 max-w-3xl">
+                {t.info.addresses.map((address: string, index: number) => {
+                  const locationImages = [
+                    'https://i.pinimg.com/1200x/bd/8a/34/bd8a342fec53d262024b4c55f36bcdb9.jpg', // Egypt
+                    'https://i.pinimg.com/736x/09/b5/b6/09b5b62ece305e10396ecedac3b364f7.jpg'  // UAE
+                  ];
+                  
+                  return (
+                    <div key={index} className="flex flex-col gap-4 group">
+                      {/* Image with location info overlay */}
+                      <div className="relative overflow-hidden border-2 border-blue-600 group-hover:border-red-600 transition-all h-48 shadow-[4px_4px_0px_0px_rgba(37,99,235,0.5)] group-hover:shadow-[4px_4px_0px_0px_rgba(220,38,38,0.5)]">
+                        <img 
+                          src={locationImages[index]} 
+                          alt={address}
+                          className="w-full h-full object-cover transition-all duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent flex flex-col justify-end p-4">
+                          <div className="flex items-center gap-2 mb-2">
+                            <MapPin size={20} className="text-blue-500 group-hover:text-red-500 transition-colors" />
+                            <h4 className="font-bold text-white text-sm uppercase">{index === 0 ? 'Egypt' : 'UAE'}</h4>
+                          </div>
+                          <p className="text-gray-300 text-xs font-light">{address}</p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-              
-              <div className="flex flex-col items-start gap-4 group">
-                <div className="p-3 md:p-4 bg-black border border-blue-600 text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(37,99,235,0.5)]">
-                  <Phone size={20} />
+            </div>
+
+            {/* Contact Methods Section - Centered */}
+            <div className="flex flex-col items-center gap-6 md:gap-8">
+              {/* Phone and WhatsApp Row */}
+              <div className="flex gap-6 md:gap-8 justify-center">
+                <div className="flex flex-col items-center gap-4 group">
+                  <div className="p-3 md:p-4 bg-black border border-blue-600 text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(37,99,235,0.5)]">
+                    <Phone size={20} />
+                  </div>
+                  <div className="text-center">
+                    <h4 className="font-bold text-white text-sm md:text-lg uppercase mb-1 whitespace-nowrap">Phone</h4>
+                    <a href={`tel:${t.info.phone}`} className="text-gray-400 hover:text-white font-light font-mono text-xs md:text-sm transition-colors block whitespace-nowrap" dir="ltr">{t.info.phone}</a>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-bold text-white text-sm md:text-lg uppercase mb-1">Phone</h4>
-                  <p className="text-gray-400 font-light dir-ltr text-start font-mono text-sm">{t.info.phone}</p>
+
+                <div className="flex flex-col items-center gap-4 group">
+                  <div className="p-3 md:p-4 bg-black border border-green-600 text-green-500 group-hover:bg-green-600 group-hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(34,197,94,0.5)]">
+                    <MessageCircle size={20} />
+                  </div>
+                  <div className="text-center">
+                    <h4 className="font-bold text-white text-sm md:text-lg uppercase mb-1 whitespace-nowrap">WhatsApp</h4>
+                    <a href={`https://wa.me/${t.info.phone.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white font-light font-mono text-xs md:text-sm transition-colors block whitespace-nowrap" dir="ltr">{t.info.phone}</a>
+                  </div>
                 </div>
               </div>
 
-              <div className="flex flex-col items-start gap-4 group">
-                <div className="p-3 md:p-4 bg-black border border-red-600 text-red-500 group-hover:bg-red-600 group-hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(220,38,38,0.5)]">
-                  <Mail size={20} />
-                </div>
-                <div>
-                  <h4 className="font-bold text-white text-sm md:text-lg uppercase mb-1">Email</h4>
-                  <p className="text-gray-400 font-light text-sm">{t.info.email}</p>
+              {/* Email Row */}
+              <div className="flex justify-center">
+                <div className="flex flex-col items-center gap-4 group">
+                  <div className="p-3 md:p-4 bg-black border border-red-600 text-red-500 group-hover:bg-red-600 group-hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(220,38,38,0.5)]">
+                    <Mail size={20} />
+                  </div>
+                  <div className="text-center">
+                    <h4 className="font-bold text-white text-sm md:text-lg uppercase mb-1 whitespace-nowrap">Email</h4>
+                    <p className="text-gray-400 font-light text-xs md:text-sm whitespace-nowrap">{t.info.email}</p>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Socials */}
-            <div className="flex gap-3 md:gap-4 pt-4 justify-center md:justify-start">
+            <div className="flex gap-3 md:gap-4 pt-4 justify-center">
               {[Facebook, Twitter, Linkedin, Instagram].map((Icon, i) => (
                 <a key={i} href="#" className="p-2 md:p-3 bg-black border border-white/20 hover:border-blue-500 text-gray-400 hover:text-white transition-all">
                   <Icon size={18} />
@@ -624,16 +672,43 @@ const Contact = ({ lang }: { lang: Language }) => {
       </div>
       
       {/* Footer Strip */}
-      <div className="mt-12 md:mt-20 border-t border-white/10 pt-6 md:pt-8 flex flex-col items-center gap-4 md:gap-6 reveal">
-         {/* Footer Logo */}
-         <img 
+      <div className="mt-12 md:mt-20 border-t border-white/10 pt-6 md:pt-8 reveal">
+        <div className="flex flex-col items-center gap-4 md:gap-6 text-center">
+          {/* Footer Logo */}
+          <img 
             src="https://i.postimg.cc/fWvwHnNT/logo-ELALAMYA-png.png" 
             alt="EL ALAMYA" 
-            className="h-12 md:h-20 w-auto opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500"
-         />
-         <p className="text-gray-600 text-xs font-mono uppercase text-center px-4">{content[lang].footer.rights}</p>
+            className="h-12 md:h-20 w-auto opacity-70 hover:opacity-100 transition-all duration-500"
+          />
+          <p className="text-gray-600 text-xs font-mono uppercase px-4">{content[lang].footer.rights}</p>
+        </div>
       </div>
     </section>
+  );
+};
+
+// --- Loading Screen Component ---
+const LoadingScreen = () => {
+  return (
+    <div className="fixed inset-0 z-[100] bg-gradient-to-br from-[#020617] via-[#172554] to-[#450a0a] flex items-center justify-center">
+      <div className="text-center">
+        {/* Logo */}
+        <div className="mb-8">
+          <img 
+            src="https://i.postimg.cc/fWvwHnNT/logo-ELALAMYA-png.png" 
+            alt="EL ALAMYA" 
+            className="h-40 md:h-56 w-auto object-contain mx-auto"
+          />
+        </div>
+        
+        {/* Loading spinner */}
+        <div className="flex justify-center gap-2">
+          <div className="w-3 h-3 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0s' }}></div>
+          <div className="w-3 h-3 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+          <div className="w-3 h-3 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+        </div>
+      </div>
+    </div>
   );
 };
 
@@ -642,6 +717,16 @@ const Contact = ({ lang }: { lang: Language }) => {
 const App = () => {
   const [lang, setLang] = useState<Language>('en');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  // Loading screen effect
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000); // Show loading for 2 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
 
   // Set page direction based on language
   useEffect(() => {
@@ -653,6 +738,9 @@ const App = () => {
 
   // Setup Scroll Reveal Observer
   useEffect(() => {
+    // Skip if still loading
+    if (loading) return;
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -660,15 +748,20 @@ const App = () => {
         }
       });
     }, {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px" // Trigger slightly before element is fully in view
+      threshold: 0.05,
+      rootMargin: "0px 0px 200px 0px" // Trigger earlier - 200px before element enters viewport
     });
 
     const elements = document.querySelectorAll('.reveal');
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  }, [lang]); // Re-run if lang changes (DOM update)
+  }, [lang, loading]); // Re-run if lang changes or loading state changes
+
+  // Show loading screen
+  if (loading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className={`min-h-screen text-white overflow-x-hidden ${lang === 'ar' ? 'text-right' : 'text-left'} bg-transparent`}>
